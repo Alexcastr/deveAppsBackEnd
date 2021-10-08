@@ -1,8 +1,18 @@
-import Express  from 'express';
+import Express from 'express';
+import Cors from 'cors';
+import dotenv from 'dotenv';
+import { connectDB } from './db/db.js';
 
+dotenv.config({ path: './.env' });
 
 const app = Express();
 
-app.listen(5000, () =>{
-    console.log('escuchando puerto 5000')
-})
+app.use(Express.json());
+app.use(Cors());
+
+const main = () => {
+  return app.listen(process.env.PORT, () => {
+    console.log(`escuchando puerto ${process.env.PORT}`);
+  });
+};
+ connectDB(main);
