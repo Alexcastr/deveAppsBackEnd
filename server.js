@@ -3,7 +3,7 @@ import { MongoClient, ObjectId } from "mongodb";
 import Cors from "cors";
 
 const stringConexion =
-  "";
+  "mongodb+srv://jaimemunozq:admindatabase15@deveappsbd.j2i6z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 const client = new MongoClient(stringConexion, {
   useNewUrlParser: true,
