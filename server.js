@@ -1,16 +1,9 @@
-import Express from "express";
-import { MongoClient, ObjectId } from "mongodb";
-import Cors from "cors";
+import Express from 'express';
+import Cors from 'cors';
+import dotenv from 'dotenv';
+import { connectDB } from './db/db.js';
 
-const stringConexion =
-  "mongodb+srv://jaimemunozq:admindatabase15@deveappsbd.j2i6z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-const client = new MongoClient(stringConexion, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-let baseDeDatos;
+dotenv.config({ path: './.env' });
 
 const app = Express();
 
@@ -87,16 +80,8 @@ app.patch('/productos/actualizar', (req, res) => {
   });
 
 const main = () => {
-  client.connect((err, db) => {
-    if (err) {
-      console.error("Error conectando a la base de datos");
-    }
-    baseDeDatos = db.db("productos");
-    console.log("conexion a la base De Datos exitosa");
-    return app.listen(5000, () => {
-      console.log("escuchando puerto 5000");
-    });
+  return app.listen(process.env.PORT, () => {
+    console.log(`escuchando puerto ${process.env.PORT}`);
   });
 };
-
-main();
+ connectDB(main);
