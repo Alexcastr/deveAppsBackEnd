@@ -30,6 +30,6 @@ const updateProduct = async (id, edition, callback) => {
 const deleteProduct = async (id, callback) =>{
     const filteredProduct ={_id: new ObjectId(id)};
     const dataBase =getDB();
-    await dataBase.collection('productos').deleteOne(filteredProduct, callback);
+    await dataBase.collection("productos").deleteOne(filteredProduct, callback);
 }
 export { getAllProducts, createProduct, updateProduct, deleteProduct };

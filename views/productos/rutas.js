@@ -4,7 +4,7 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-} from "../../controllers/productos/controller";
+} from "../../controllers/productos/controller.js";
 const routesProducts = Express.Router();
 
 const genericCallback = (res) => (err, result) => {
