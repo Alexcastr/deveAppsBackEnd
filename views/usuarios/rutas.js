@@ -1,5 +1,9 @@
 import Express from "express";
-import { getAllUsers, updateUser } from "../../controllers/usuarios/controller.js";
+import {
+  deleteUser,
+  getAllUsers,
+  updateUser,
+} from "../../controllers/usuarios/controller.js";
 
 const routesUsers = Express.Router();
 
@@ -17,6 +21,10 @@ routesUsers.route("/usuarios").get((req, res) => {
 
 routesUsers.route("/usuarios/:id").patch((req, res) => {
   updateUser(req.params.id, req.body, genericCallback(res));
+});
+
+routesUsers.route("/usuarios/:id").delete((req, res) => {
+  deleteUser(req.params.id, genericCallback(res));
 });
 
 export default routesUsers;

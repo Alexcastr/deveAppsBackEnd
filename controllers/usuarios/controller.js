@@ -22,4 +22,10 @@ const updateUser = async (id, edition, callback) => {
     );
 };
 
-export { getAllUsers, updateUser };
+const deleteUser = async (id, callback) =>{
+  const filteredUser ={_id: new ObjectId(id)};
+  const dataBase =getDB();
+  await dataBase.collection("usuarios").deleteOne(filteredUser, callback);
+}
+
+export { getAllUsers, updateUser, deleteUser };
