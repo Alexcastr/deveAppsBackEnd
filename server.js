@@ -4,8 +4,10 @@ import dotenv from "dotenv";
 import { connectDB } from "./db/db.js";
 import routesProducts from "./views/productos/rutas.js";
 import routesUsers from "./views/usuarios/rutas.js";
+import routesSales from './views/ventas/rutas.js';
 import jwt from "express-jwt";
 import jwks from "jwks-rsa";
+
 
 dotenv.config({ path: "./.env" });
 
@@ -29,6 +31,7 @@ var jwtCheck = jwt({
 app.use(jwtCheck);
 app.use(routesProducts);
 app.use(routesUsers);
+app.use(routesSales);
 
 const main = () => {
   return app.listen(process.env.PORT, () => {
