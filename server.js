@@ -5,6 +5,7 @@ import { connectDB } from "./db/db.js";
 import routesProducts from "./views/productos/rutas.js";
 import routesUsers from "./views/usuarios/rutas.js";
 import routesSales from './views/ventas/rutas.js';
+import  verificationRoute  from "./views/usuarios/rutaVerificacion.js";
 import jwt from "express-jwt";
 import jwks from "jwks-rsa";
 import autorizacionEstadoUsuario from './middleware/estadoUsuario.js';
@@ -30,9 +31,10 @@ var jwtCheck = jwt({
 });
 
 app.use(jwtCheck);
-//app.use(autorizacionEstadoUsuario);
-app.use(routesProducts);
+app.use(verificationRoute);
+app.use(autorizacionEstadoUsuario);
 app.use(routesUsers);
+app.use(routesProducts);
 app.use(routesSales);
 
 const main = () => {
