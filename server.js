@@ -30,7 +30,7 @@ var jwtCheck = jwt({
 });
 
 app.use(jwtCheck);
-app.use(autorizacionEstadoUsuario);
+//app.use(autorizacionEstadoUsuario);
 app.use(routesProducts);
 app.use(routesUsers);
 app.use(routesSales);
