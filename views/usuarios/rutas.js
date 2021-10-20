@@ -1,5 +1,6 @@
 import Express from "express";
 import {
+  checkOrCreateUser,
   createUser,
   deleteUser,
   getAllUsers,
@@ -23,6 +24,11 @@ routesUsers.route("/usuarios").get((req, res) => {
 
 routesUsers.route("/usuarios").post((req, res) => {
   createUser(req.body, genericCallback(res));
+});
+
+routesUsers.route("/usuarios/self").get((req, res) => {
+  console.log('alguien hizo get en la ruta /self');
+  checkOrCreateUser(req, genericCallback(res));
 });
 
 routesUsers.route("/usuarios/:role").get((req, res) => {

@@ -20,6 +20,9 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
         next();
       }
     }
+    else{
+      next();
+    }
   });
 };
 
